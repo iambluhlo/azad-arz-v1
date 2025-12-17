@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { TrendingUp, Shield, Users, Zap, ArrowLeft } from 'lucide-react';
 
@@ -43,7 +42,7 @@ const Homepage = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center animate-slide-up">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              بهترین پلتفرم
+              
               <span className="text-primary-400 block mt-2">معاملات ارزهای دیجیتال</span>
             </h1>
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
@@ -54,13 +53,13 @@ const Homepage = () => {
                 to="/register"
                 className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-200 transform hover:scale-105 animate-pulse-glow"
               >
-                شروع معاملات
+               شروع معاملات
               </Link>
               <Link
                 to="/trading"
                 className="border border-primary-500 text-primary-400 hover:bg-primary-500 hover:text-white px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-200 transform hover:scale-105"
               >
-                مشاهده بازار
+               مشاهده بازار
               </Link>
             </div>
           </div>
@@ -108,7 +107,7 @@ const Homepage = () => {
       <section className="py-16 bg-dark-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">چرا بیت‌کوین پلاس؟</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">چرا آزاد ارز؟</h2>
             <p className="text-gray-400">امکانات و مزایای منحصر به فرد پلتفرم ما</p>
           </div>
           
