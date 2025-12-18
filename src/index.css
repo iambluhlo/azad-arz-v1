@@ -1,22 +1,19 @@
-@import url('./fonts.css');
+@import url("/public/assets/fonts/fonts.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
 
 * {
   direction: rtl;
 }
 
 body {
-  font-family: 'MyCustomFont', sans-serif;
+  font-family: "MyCustomFont", sans-serif;
   background-color: #0f172a;
   color: #f8fafc;
 }
-ً
-.ltr {
+ً .ltr {
   direction: ltr;
 }
 
@@ -59,7 +56,8 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
   }
   50% {
