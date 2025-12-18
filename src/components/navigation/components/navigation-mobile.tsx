@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, TrendingUp, Wallet, Settings } from 'lucide-react';
+import { Link, useLocation } from "react-router-dom";
+import { AppLogo } from "../../app-logo";
+import { NavigationConstants } from "./constants";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
-// مثال: وضعیت کاربر
-// در پروژه واقعی، این اطلاعات از Context یا Redux یا API میاد
-const user = { role: 'admin' }; // 'user' یا 'admin'
+interface NavigationMobileProps {
+  navItems: any[];
+  user: { role: string };
+}
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export const NavigationMobile: React.FC<NavigationMobileProps> = ({
+  navItems,
+  user,
+}) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const location = useLocation();
-
-  const navItems = [
-    { path: '/', label: 'خانه', icon: TrendingUp },
-    { path: '/dashboard', label: 'داشبورد', icon: TrendingUp },
-    { path: '/trading', label: 'معاملات', icon: TrendingUp },
-    { path: '/wallet', label: 'کیف پول', icon: Wallet },
-    { path: '/admin', label: 'پنل مدیریت', icon: Settings, adminOnly: true },
-  ];
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -25,31 +23,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 space-x-reverse">
-            <TrendingUp className="h-8 w-8 text-primary-500" />
-            <span className="text-xl font-bold text-white">آزاد ازر</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8 space-x-reverse">
-            {navItems.map((item) => {
-              if (item.adminOnly && user.role !== 'admin') return null;
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`flex items-center space-x-2 space-x-reverse px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    isActive(item.path)
-                      ? 'bg-primary-600 text-white'
-                      : 'text-gray-300 hover:bg-dark-700 hover:text-white'
-                  }`}
-                >
-                  <item.icon className="h-4 w-4" />
-                  <span>{item.label}</span>
-                </Link>
-              );
-            })}
-          </div>
+          <AppLogo />
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4 space-x-reverse">
@@ -57,13 +31,13 @@ const Navbar = () => {
               to="/login"
               className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
             >
-              ورود
+              {NavigationConstants.login}
             </Link>
             <Link
               to="/register"
               className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
             >
-              ثبت نام
+              {NavigationConstants.register}
             </Link>
           </div>
 
@@ -73,7 +47,11 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-300 hover:text-white focus:outline-none"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -83,15 +61,15 @@ const Navbar = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navItems.map((item) => {
-                if (item.adminOnly && user.role !== 'admin') return null;
+                if (item.adminOnly && user.role !== "admin") return null;
                 return (
                   <Link
                     key={item.path}
                     to={item.path}
                     className={`flex items-center space-x-2 space-x-reverse px-3 py-2 rounded-md text-base font-medium transition-colors ${
                       isActive(item.path)
-                        ? 'bg-primary-600 text-white'
-                        : 'text-gray-300 hover:bg-dark-700 hover:text-white'
+                        ? "bg-primary-600 text-white"
+                        : "text-gray-300 hover:bg-dark-700 hover:text-white"
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -107,14 +85,14 @@ const Navbar = () => {
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-dark-700 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
-                  ورود
+                  {NavigationConstants.login}
                 </Link>
                 <Link
                   to="/register"
                   className="block px-3 py-2 rounded-md text-base font-medium bg-primary-600 text-white hover:bg-primary-700 transition-colors mt-2"
                   onClick={() => setIsOpen(false)}
                 >
-                  ثبت نام
+                  {NavigationConstants.register}
                 </Link>
               </div>
             </div>
@@ -124,5 +102,3 @@ const Navbar = () => {
     </nav>
   );
 };
-
-export default Navbar;
