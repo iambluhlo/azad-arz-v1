@@ -1,0 +1,1 @@
+export { loginTranslations } from "./constants";
