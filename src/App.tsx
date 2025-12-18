@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
@@ -6,7 +5,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Trading from "./pages/Trading";
 import Wallet from "./pages/Wallet";
-import AdminPanel from "./pages/AdminPanel";
+import AdminPanel from "./components/admin-panel/admin-panel";
 import { Navigation } from "./components/navigation";
 
 function App() {
